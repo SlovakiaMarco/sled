@@ -1,0 +1,7 @@
+# sLED – Netlify presmerovania starých URL z Wixu
+/info             /#info                          301
+/blank            /#cennik                        301
+/blank-1          /#collab                        301
+/privacy-policy   /ochrana-osobnych-udajov.html   301
+/_src/*           /                               404
+/tests/*          /                               404

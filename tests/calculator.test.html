@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <title>sLED – test kalkulačky</title>
+  <style>body{font:14px/1.5 ui-monospace,Consolas,monospace;background:#050506;color:#eee;padding:2rem}.pass{color:#33e0a0}.fail{color:#ff5c7a}</style>
+</head>
+<body>
+  <h1>Test cenovej kalkulačky</h1>
+  <pre id="out">Beží…</pre>
+  <script src="../js/calculator.js"></script>
+  <script>
+    (function () {
+      var out = document.getElementById('out');
+      var lines = [], failed = 0, passed = 0;
+      var norm = function (s) { return String(s).replace(/[\s  ]+/g, ' ').trim(); };
+      function check(name, actual, expected) {
+        var ok = norm(actual) === norm(expected);
+        ok ? passed++ : failed++;
+        lines.push((ok ? 'PASS ' : 'FAIL ') + name + ' → ' + norm(actual) + (ok ? '' : '  (očakávané: ' + expected + ')'));
+      }
+      SLEDPricing.load('../data/pricing.json').then(function (data) {
+        var P = SLEDPricing;
+        var f = function (d, s, x) { return P.format(P.calc(data, d, s, x).cents); };
+
+        // zadané ceny
+        check('2 týždne / 10 s',          f('2w', '10', false),  '49,99 €');
+        check('2 týždne / 10 s / 2×',     f('2w', '10', true),   '99,98 €');
+        check('2 týždne / 25 s',          f('2w', '25', false),  '119,99 €');
+        check('2 týždne / 25 s / 2×',     f('2w', '25', true),   '239,98 €');
+        check('1 rok / 10 s',             f('12m', '10', false), '869,99 €');
+        check('1 rok / 10 s / 2×',        f('12m', '10', true),  '1 739,98 €');
+        check('1 rok / 25 s',             f('12m', '25', false), '2 159,99 €');
+        check('1 rok / 25 s / 2×',        f('12m', '25', true),  '4 319,98 €');
+
+        // štruktúra cenníka
+        check('počet dĺžok prenájmu', data.durations.map(function (d) { return d.label; }).join(', '),
+          '2 týždne, 1 mesiac, 2 mesiace, 3 mesiace, 4 mesiace, 5 mesiacov, 6 mesiacov, 1 rok');
+        check('dĺžky spotu', data.spots.map(function (s) { return s.label; }).join(', '), '10 s, 15 s, 20 s, 25 s');
+
+        // každá kombinácia existuje, 2× je presne dvojnásobok, ceny rastú s dĺžkou spotu aj prenájmu
+        var all = true, dbl = true, mono = true;
+        data.durations.forEach(function (d, di) {
+          data.spots.forEach(function (s, si) {
+            var r1 = P.calc(data, d.id, s.id, false), r2 = P.calc(data, d.id, s.id, true);
+            if (!(r1.cents > 0)) all = false;
+            if (r2.cents !== r1.cents * 2) dbl = false;
+            if (si > 0 && r1.cents <= P.calc(data, d.id, data.spots[si - 1].id, false).cents) mono = false;
+            if (di > 0 && r1.cents <= P.calc(data, data.durations[di - 1].id, s.id, false).cents) mono = false;
+          });
+        });
+        check('všetkých 32 kombinácií má cenu', all, true);
+        check('2× = presne dvojnásobok', dbl, true);
+        check('ceny rastú s dĺžkou spotu aj prenájmu', mono, true);
+
+        var confirmed = [];
+        data.durations.forEach(function (d) { data.spots.forEach(function (s) { if (data.prices[d.id][s.id].confirmed) confirmed.push(d.id + '/' + s.id); }); });
+        check('potvrdené ceny', confirmed.join(' '), '2w/10 2w/25 12m/10 12m/25');
+
+        check('cena za deň (1 rok / 10 s)', P.format(P.calc(data, '12m', '10', false).perDayCents), '2,38 €');
+
+        lines.unshift('VÝSLEDOK: ' + (failed ? 'FAIL' : 'OK') + ' (' + passed + ' prešlo, ' + failed + ' zlyhalo)', '');
+        out.textContent = lines.join('\n');
+        out.className = failed ? 'fail' : 'pass';
+        document.title = failed ? 'FAIL' : 'OK';
+      }).catch(function (e) {
+        out.textContent = 'FAIL: ' + e.message;
+        out.className = 'fail';
+      });
+    })();
+  </script>
+</body>
+</html>

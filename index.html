@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="sk" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>sLED – LED billboard Stará Ľubovňa | Prenájom reklamného priestoru</title>
+  <meta name="description" content="Prenájom reklamy na LED billboarde 5,76 × 2,88 m na Popradskej ulici v Starej Ľubovni. Denne ho míňa 18 000 – 20 000 áut a okoloidúcich. Vypočítajte si cenu kampane online.">
+  <link rel="canonical" href="https://www.sled.sk/">
+  <meta name="theme-color" content="#050506">
+  <meta name="color-scheme" content="dark">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="sk_SK">
+  <meta property="og:site_name" content="sLED">
+  <meta property="og:title" content="sLED – Nechajte vašu reklamu vyniknúť">
+  <meta property="og:description" content="LED billboard na frekventovanom vstupe do Starej Ľubovne. 16,58 m², Full HD, 18 000 – 20 000 áut denne.">
+  <meta property="og:url" content="https://www.sled.sk/">
+  <meta property="og:image" content="https://www.sled.sk/assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <link rel="preload" href="assets/fonts/archivo-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/lenis.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script>
+    (function (d) {
+      var c = d.documentElement.classList;
+      c.remove('no-js'); c.add('js');
+      try { if (sessionStorage.getItem('sled-visited')) c.add('no-preload'); } catch (e) {}
+      if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) c.add('reduced');
+      // poistka: ak sa skripty nenačítajú, zobraz obsah
+      setTimeout(function () { if (!window.__sledReady) c.add('no-anim'); }, 4000);
+    })(document);
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "sLED – LED billboard Stará Ľubovňa",
+    "description": "Prenájom reklamného priestoru na LED billboarde 5,76 × 2,88 m (16,58 m², Full HD) na Popradskej ulici v Starej Ľubovni.",
+    "url": "https://www.sled.sk/",
+    "image": "https://www.sled.sk/assets/img/og-image.jpg",
+    "email": "sled@ascensio.sk",
+    "telephone": "+421919455955",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Továrenská 1471/7",
+      "postalCode": "064 01",
+      "addressLocality": "Stará Ľubovňa",
+      "addressCountry": "SK"
+    },
+    "parentOrganization": { "@type": "Organization", "name": "Ascensio Holding" },
+    "areaServed": "Stará Ľubovňa"
+  }
+  </script>
+
+  <script src="js/vendor/gsap.min.js" defer></script>
+  <script src="js/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="js/vendor/SplitText.min.js" defer></script>
+  <script src="js/vendor/lenis.min.js" defer></script>
+  <script src="js/config.js" defer></script>
+  <script src="js/led-matrix.js" defer></script>
+  <script src="js/led-shader.js" defer></script>
+  <script src="js/forms.js" defer></script>
+  <script src="js/calculator.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Preskočiť na obsah</a>
+
+  <!-- Preloader -->
+  <div class="preloader" aria-hidden="true">
+    <canvas class="preloader__matrix"></canvas>
+    <div class="preloader__meta">
+      <span>LED billboard<br>Stará Ľubovňa</span>
+      <span class="preloader__count">000</span>
+    </div>
+    <div class="preloader__bar"></div>
+  </div>
+
+  <div class="cursor" aria-hidden="true">
+    <div class="cursor__ring"><span class="cursor__label"></span></div>
+    <div class="cursor__dot"></div>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <a class="logo" href="#top" aria-label="sLED by Ascensio Holding – na začiatok stránky">
+      <span class="logo__mark">s<b>LED</b></span>
+      <span class="logo__by">by Ascensio Holding</span>
+    </a>
+    <nav class="nav" aria-label="Hlavná navigácia">
+      <ul>
+        <li><a href="#info">Info</a></li>
+        <li><a href="#lokalita">Lokalita</a></li>
+        <li><a href="#obrazovka">Obrazovka</a></li>
+        <li><a href="#cennik">Cenník</a></li>
+        <li><a href="#collab">Collab</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--primary btn--sm header__cta magnetic" href="#cennik">
+      <span class="btn__text"><span data-text="Vypočítať cenu">Vypočítať cenu</span></span>
+    </a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="menu">
+      <span class="burger__lines" aria-hidden="true"><i></i><i></i></span>
+      <span class="sr-only">Otvoriť menu</span>
+    </button>
+    <div class="header__progress" aria-hidden="true"></div>
+  </header>
+
+  <!-- Mobilné menu -->
+  <div class="menu" id="menu" inert>
+    <nav aria-label="Mobilná navigácia">
+      <ul class="menu__list">
+        <li><a href="#info"><span>01</span>Info</a></li>
+        <li><a href="#lokalita"><span>02</span>Lokalita</a></li>
+        <li><a href="#obrazovka"><span>03</span>Obrazovka</a></li>
+        <li><a href="#cennik"><span>04</span>Cenník</a></li>
+        <li><a href="#collab"><span>05</span>Collab</a></li>
+      </ul>
+    </nav>
+    <div class="menu__foot">
+      <a href="mailto:sled@ascensio.sk">sled@ascensio.sk</a>
+      <a href="tel:+421919455955">+421 919 455 955</a>
+    </div>
+  </div>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top" aria-label="Úvod">
+      <div class="hero__media">
+        <video class="hero__video" muted playsinline loop autoplay preload="auto" poster="assets/img/hero-poster.webp" aria-hidden="true">
+          <source src="assets/video/hero-720.mp4" type="video/mp4" media="(max-width: 900px)">
+          <source src="assets/video/hero-1080.mp4" type="video/mp4">
+        </video>
+        <canvas class="hero__gl" aria-hidden="true"></canvas>
+        <div class="hero__shade" aria-hidden="true"></div>
+      </div>
+
+      <div class="hud" aria-hidden="true">
+        <span class="hud__live"><i class="live-dot"></i> Live</span>
+        <span>Popradská · Stará Ľubovňa</span>
+        <span>49°18′ N · 20°41′ E</span>
+        <span class="hud__tc" data-timecode>CAM 01 — 00:00:00</span>
+      </div>
+
+      <div class="hero__content container">
+        <p class="eyebrow" data-hero-fade><span class="live-dot"></span> LED billboard · Stará Ľubovňa</p>
+        <h1 class="hero__title" aria-label="Nechajte vašu reklamu vyniknúť">
+          <span class="line" aria-hidden="true">Nechajte</span>
+          <span class="line" aria-hidden="true">vašu reklamu</span>
+          <span class="line line--accent" aria-hidden="true"><em>vyniknúť</em></span>
+        </h1>
+        <div class="hero__bottom">
+          <p class="hero__lead" data-hero-fade>Vaša značka v centre pozornosti Starej Ľubovne.</p>
+          <div class="hero__ctas" data-hero-fade>
+            <a class="btn btn--primary magnetic" href="#cennik">
+              <span class="btn__text"><span data-text="Vypočítať cenu">Vypočítať cenu</span></span>
+              <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="btn btn--ghost magnetic" href="#info">
+              <span class="btn__text"><span data-text="Zobraziť viac">Zobraziť viac</span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__ticker" aria-hidden="true">
+        <div class="ticker__track">
+          <span>Popradská ulica · Stará Ľubovňa</span><i>✦</i>
+          <span>18 000 – 20 000 áut denne</span><i>✦</i>
+          <span>5,76 × 2,88 m</span><i>✦</i>
+          <span>16,58 m²</span><i>✦</i>
+          <span>Full HD</span><i>✦</i>
+          <span>Video aj statická reklama</span><i>✦</i>
+          <span>Popradská ulica · Stará Ľubovňa</span><i>✦</i>
+          <span>18 000 – 20 000 áut denne</span><i>✦</i>
+          <span>5,76 × 2,88 m</span><i>✦</i>
+          <span>16,58 m²</span><i>✦</i>
+          <span>Full HD</span><i>✦</i>
+          <span>Video aj statická reklama</span><i>✦</i>
+        </div>
+      </div>
+
+      <a class="hero__scroll" href="#info" aria-label="Posunúť na ďalšiu sekciu" data-hero-fade>
+        <span>Scroll</span><i></i>
+      </a>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__row" data-marquee="1">
+        <span>Viditeľnosť</span><span class="star">✦</span><span class="is-fill">Dosah</span><span class="star">✦</span><span>Stará Ľubovňa</span><span class="star">✦</span>
+        <span>Viditeľnosť</span><span class="star">✦</span><span class="is-fill">Dosah</span><span class="star">✦</span><span>Stará Ľubovňa</span><span class="star">✦</span>
+      </div>
+      <div class="marquee__row" data-marquee="-1">
+        <span class="is-fill">Full HD</span><span class="star">✦</span><span>16,58 m²</span><span class="star">✦</span><span class="is-fill">V centre pozornosti</span><span class="star">✦</span>
+        <span class="is-fill">Full HD</span><span class="star">✦</span><span>16,58 m²</span><span class="star">✦</span><span class="is-fill">V centre pozornosti</span><span class="star">✦</span>
+      </div>
+    </div>
+
+    <!-- INFO -->
+    <section class="section intro" id="info" tabindex="-1">
+      <div class="container">
+        <p class="label" data-reveal>(01) Info</p>
+        <h2 class="intro__statement" data-scrub-words>Moderný reklamný priestor s vysokou viditeľnosťou a&nbsp;denným dosahom tisícov ľudí.</h2>
+        <div class="intro__cols">
+          <p data-reveal>LED billboard sa nachádza na ulici <strong>Popradská</strong> – na frekventovanom vstupe do mesta Stará Ľubovňa. Denne ho míňa viac ako <strong>18 000 – 20 000 áut a okoloidúcich</strong>, čo zaručuje vysokú viditeľnosť vašej reklamy.</p>
+          <p data-reveal>Obrazovka s rozmerom <strong>5,76 × 2,88 m (16,58 m²)</strong> a kvalitou Full HD umožňuje zobrazovanie videa aj statických reklám v pomere strán 2:1. V blízkosti sa nachádzajú obchodné centrá ako <strong>Lidl a Kaufland</strong> či centrum mesta, čo zvyšuje zásah vašej cieľovej skupiny.</p>
+        </div>
+
+        <ul class="stats" aria-label="Billboard v číslach">
+          <li class="stat spot-hover" data-reveal>
+            <span class="stat__index">01 — Dosah</span>
+            <span class="stat__value"><span data-count="20000" data-sep=" ">20 000</span><small>/ deň</small></span>
+            <span class="stat__label">áut a okoloidúcich denne (18&nbsp;000&nbsp;–&nbsp;20&nbsp;000)</span>
+          </li>
+          <li class="stat spot-hover" data-reveal>
+            <span class="stat__index">02 — Plocha</span>
+            <span class="stat__value"><span data-count="16.58" data-decimals="2">16,58</span><small>m²</small></span>
+            <span class="stat__label">svietiacej plochy na vstupe do mesta</span>
+          </li>
+          <li class="stat spot-hover" data-reveal>
+            <span class="stat__index">03 — Formát</span>
+            <span class="stat__value"><span data-count="2" data-decimals="0">2</span>:1</span>
+            <span class="stat__label">pomer strán · rozmer 5,76&nbsp;×&nbsp;2,88&nbsp;m</span>
+          </li>
+          <li class="stat spot-hover" data-reveal>
+            <span class="stat__index">04 — Kvalita</span>
+            <span class="stat__value">Full&nbsp;HD</span>
+            <span class="stat__label">video aj statická reklama</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- LOKALITA -->
+    <section class="section location" id="lokalita" tabindex="-1">
+      <div class="container location__grid">
+        <div class="location__text">
+          <p class="label" data-reveal>(02) Lokalita</p>
+          <h2 class="h2" data-split>Na frekventovanom <em>vstupe do mesta</em></h2>
+          <p class="lead" data-reveal>Billboard stojí priamo pri ceste na Popradskej ulici. Vodiči ho majú v priamom zornom poli a vďaka obchodným centrám a centru mesta v blízkosti oslovíte aj chodcov a nakupujúcich.</p>
+          <ol class="places">
+            <li data-reveal><span><b>01</b> Popradská ulica</span><span>Vstup do mesta</span></li>
+            <li data-reveal><span><b>02</b> Lidl</span><span>Obchodné centrum</span></li>
+            <li data-reveal><span><b>03</b> Kaufland</span><span>Obchodné centrum</span></li>
+            <li data-reveal><span><b>04</b> Centrum mesta</span><span>V blízkosti</span></li>
+          </ol>
+          <a class="link-arrow" href="https://www.google.com/maps/search/?api=1&amp;query=Popradsk%C3%A1%2C%20064%2001%20Star%C3%A1%20%C4%BDubov%C5%88a" target="_blank" rel="noopener" data-reveal data-cursor="Mapa">
+            Otvoriť v Google Maps
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </a>
+        </div>
+
+        <figure class="map" data-reveal>
+          <svg class="map__svg" viewBox="0 0 600 600" role="img" aria-labelledby="map-title">
+            <title id="map-title">Schéma polohy billboardu na Popradskej ulici pri vstupe do Starej Ľubovne, v blízkosti Lidl, Kaufland a centra mesta</title>
+            <defs>
+              <radialGradient id="pinGlow">
+                <stop offset="0" stop-color="#ED1566" stop-opacity=".9"/>
+                <stop offset="1" stop-color="#ED1566" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <g class="map__minor">
+              <path d="M0 318 C 110 322, 210 318, 292 300"/>
+              <path d="M410 246 C 452 296, 520 330, 600 352"/>
+              <path d="M300 300 C 286 230, 282 140, 312 0"/>
+              <path d="M520 130 L 600 96"/>
+              <path d="M520 130 C 534 84, 548 40, 566 0"/>
+              <path d="M140 600 C 170 520, 190 470, 224 420"/>
+              <path d="M410 246 C 440 200, 470 160, 520 130"/>
+            </g>
+            <circle class="map__center" cx="520" cy="128" r="62"/>
+            <path class="map__road-glow" d="M-10 584 C 90 532, 160 474, 224 420 S 334 300, 410 246 S 486 168, 520 130"/>
+            <path class="map__road" id="road" d="M-10 584 C 90 532, 160 474, 224 420 S 334 300, 410 246 S 486 168, 520 130"/>
+            <text class="map__street"><textPath href="#road" startOffset="12%">POPRADSKÁ</textPath></text>
+
+            <g class="map__cars">
+              <circle r="4"><animateMotion dur="9s" repeatCount="indefinite" rotate="auto"><mpath href="#road"/></animateMotion></circle>
+              <circle r="4"><animateMotion dur="9s" begin="-3s" repeatCount="indefinite"><mpath href="#road"/></animateMotion></circle>
+              <circle r="4"><animateMotion dur="9s" begin="-6s" repeatCount="indefinite"><mpath href="#road"/></animateMotion></circle>
+              <circle r="4" class="is-out"><animateMotion dur="11s" begin="-2s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#road"/></animateMotion></circle>
+              <circle r="4" class="is-out"><animateMotion dur="11s" begin="-7s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#road"/></animateMotion></circle>
+            </g>
+
+            <g class="map__poi" data-poi>
+              <circle cx="318" cy="252" r="7"/>
+              <text x="332" y="248">LIDL</text>
+            </g>
+            <g class="map__poi" data-poi>
+              <circle cx="446" cy="300" r="7"/>
+              <text x="460" y="304">KAUFLAND</text>
+            </g>
+            <g class="map__poi map__poi--center" data-poi>
+              <text x="520" y="54" text-anchor="middle">CENTRUM</text>
+            </g>
+
+            <g class="map__pin" data-poi>
+              <circle class="map__pin-glow" cx="176" cy="460" r="46" fill="url(#pinGlow)"/>
+              <circle class="map__pin-pulse" cx="176" cy="460" r="14"/>
+              <rect x="150" y="398" width="52" height="26" rx="3"/>
+              <line x1="176" y1="424" x2="176" y2="452"/>
+              <circle class="map__pin-dot" cx="176" cy="460" r="7"/>
+              <text x="138" y="408" text-anchor="end">sLED</text>
+              <text class="map__pin-sub" x="138" y="424" text-anchor="end">LED BILLBOARD</text>
+            </g>
+
+            <g class="map__north" transform="translate(556 560)">
+              <path d="M0 -18 L7 4 L0 0 L-7 4 Z"/>
+              <text y="22" text-anchor="middle">N</text>
+            </g>
+          </svg>
+          <figcaption class="map__note">Schéma · nie je v mierke</figcaption>
+        </figure>
+      </div>
+
+      <figure class="location__photo container" data-cursor="Popradská">
+        <div class="location__photo-inner" data-clip>
+          <img src="assets/img/location.webp" alt="Záber z dronu na LED billboard pri ceste na Popradskej ulici v Starej Ľubovni" loading="lazy" width="1600" height="900" data-parallax>
+        </div>
+        <figcaption><span>Popradská ulica, Stará Ľubovňa</span><span>Záber z dronu</span></figcaption>
+      </figure>
+    </section>
+
+    <!-- OBRAZOVKA -->
+    <section class="section screen" id="obrazovka" tabindex="-1">
+      <div class="screen__bg" aria-hidden="true">
+        <video muted playsinline loop preload="none" poster="assets/img/led-poster.webp" data-lazy-video>
+          <source data-src="assets/video/led-720.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="container">
+        <div class="screen__head">
+          <p class="label" data-reveal>(03) Obrazovka</p>
+          <h2 class="h2" data-split>Obrazovka, ktorú <em>nie je možné prehliadnuť</em></h2>
+          <p class="lead" data-reveal>Plocha 16,58 m² v kvalite Full HD. Zobrazuje video aj statickú reklamu v pomere strán 2:1.</p>
+        </div>
+
+        <div class="bb-stage">
+          <div class="bb" data-cursor="Váš spot">
+            <div class="bb__dim bb__dim--w" aria-hidden="true"><span>5,76 m</span></div>
+            <div class="bb__dim bb__dim--h" aria-hidden="true"><span>2,88 m</span></div>
+            <div class="bb__frame">
+              <div class="bb__screen">
+                <canvas class="bb__led" aria-label="Ukážka LED obrazovky s textom Vaša reklama tu" role="img"></canvas>
+              </div>
+            </div>
+            <div class="bb__legs" aria-hidden="true"><i></i><i></i></div>
+          </div>
+        </div>
+
+        <dl class="specs">
+          <div class="spec" data-reveal><dt>Rozmer</dt><dd>5,76&nbsp;×&nbsp;2,88&nbsp;m</dd></div>
+          <div class="spec" data-reveal><dt>Plocha</dt><dd>16,58 m²</dd></div>
+          <div class="spec" data-reveal><dt>Kvalita</dt><dd>Full HD</dd></div>
+          <div class="spec" data-reveal><dt>Pomer strán</dt><dd>2 : 1</dd></div>
+          <div class="spec" data-reveal><dt>Formát</dt><dd>Video aj statika</dd></div>
+          <div class="spec" data-reveal><dt>Lokalita</dt><dd>Popradská ulica</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- POSTUP -->
+    <section class="section process" id="postup" aria-labelledby="process-title">
+      <div class="container process__head">
+        <div>
+          <p class="label" data-reveal>(04) Ako to funguje</p>
+          <h2 class="h2" id="process-title" data-split>Od nápadu na obrazovku v <em>štyroch krokoch</em></h2>
+        </div>
+        <a class="btn btn--ghost" href="#cennik" data-reveal>
+          <span class="btn__text"><span data-text="Začať kalkuláciou">Začať kalkuláciou</span></span>
+        </a>
+      </div>
+      <div class="process__viewport">
+        <ol class="process__track">
+          <li class="step spot-hover">
+            <span class="step__num" aria-hidden="true">01</span>
+            <div>
+              <h3>Vyberte si prenájom</h3>
+              <p>V kalkulačke zvoľte dĺžku prenájmu, dĺžku spotu a frekvenciu zobrazenia. Cenu uvidíte okamžite.</p>
+            </div>
+          </li>
+          <li class="step spot-hover">
+            <span class="step__num" aria-hidden="true">02</span>
+            <div>
+              <h3>Pošlite dopyt</h3>
+              <p>Kliknite na „Mám záujem“ alebo vyplňte formulár. Ozveme sa vám s voľnými termínmi a detailmi kampane.</p>
+            </div>
+          </li>
+          <li class="step spot-hover">
+            <span class="step__num" aria-hidden="true">03</span>
+            <div>
+              <h3>Dodajte podklady</h3>
+              <p>Pripravte video alebo statickú grafiku v pomere strán 2:1. Technické detaily vám radi upresníme.</p>
+            </div>
+          </li>
+          <li class="step spot-hover">
+            <span class="step__num" aria-hidden="true">04</span>
+            <div>
+              <h3>Vaša reklama svieti</h3>
+              <p>Spot zaradíme do playlistu a vaša značka sa ocitne v centre pozornosti Starej Ľubovne.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+      <div class="container"><div class="process__bar" aria-hidden="true"><span></span></div></div>
+    </section>
+
+    <!-- CENNÍK / KALKULAČKA -->
+    <section class="section pricing" id="cennik" tabindex="-1">
+      <div class="container">
+        <div class="pricing__head">
+          <p class="label" data-reveal>(05) Cenník</p>
+          <h2 class="h2" data-split>Vypočítajte si <em>cenu kampane</em></h2>
+          <p class="lead" data-reveal>Zvoľte dĺžku prenájmu a dĺžku spotu. Ak chcete, aby sa vaša reklama zobrazovala častejšie, zaraďte ju do playlistu dvakrát. Všetky ceny sú uvedené bez DPH.</p>
+        </div>
+
+        <div class="calc" data-calc-root>
+          <form class="calc__options" id="calc-form" aria-label="Parametre kampane">
+            <fieldset class="group" data-reveal>
+              <legend><span>01</span>Dĺžka prenájmu</legend>
+              <div class="chips chips--dur" data-durations>
+                <span class="chips__loading">Načítavam cenník…</span>
+              </div>
+            </fieldset>
+
+            <fieldset class="group" data-reveal>
+              <legend><span>02</span>Dĺžka spotu</legend>
+              <div class="chips chips--spot" data-spots></div>
+            </fieldset>
+
+            <fieldset class="group" data-reveal>
+              <legend><span>03</span>Frekvencia</legend>
+              <label class="toggle">
+                <input type="checkbox" id="calc-double" name="double">
+                <span class="toggle__text">
+                  <strong>Zaradiť reklamný spot 2× do playlistu</strong>
+                  <small>Váš spot sa v slučke zobrazí dvakrát – ľudia ho uvidia dvakrát častejšie.</small>
+                </span>
+                <span class="toggle__badge" aria-hidden="true">2×</span>
+                <span class="toggle__switch" aria-hidden="true"></span>
+              </label>
+            </fieldset>
+
+            <div class="calc__actions" data-reveal>
+              <button class="btn btn--primary btn--lg magnetic" type="submit" data-calc>
+                <span class="btn__text"><span data-text="Vypočítať cenu">Vypočítať cenu</span></span>
+                <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+            <p class="calc__error" data-calc-error hidden>Cenník sa nepodarilo načítať. Napíšte nám prosím na <a href="mailto:sled@ascensio.sk">sled@ascensio.sk</a> a cenu vám pošleme.</p>
+            <noscript><p class="calc__error">Kalkulačka vyžaduje JavaScript. Cenu vám radi pošleme na <a href="mailto:sled@ascensio.sk">sled@ascensio.sk</a>.</p></noscript>
+          </form>
+
+          <aside class="panel" aria-label="Výsledok kalkulácie" data-reveal>
+            <div class="panel__top"><span><i class="live-dot"></i> sLED / kalkulácia</span><span>EUR</span></div>
+            <div class="display">
+              <canvas aria-hidden="true"></canvas>
+              <div class="display__sub"><span data-hint>Zvoľte parametre a kliknite na Vypočítať cenu.</span><span data-per-day></span></div>
+              <p class="sr-only" aria-live="polite" data-price-live></p>
+            </div>
+            <ul class="summary">
+              <li><span>Dĺžka prenájmu</span><span data-sum="duration">–</span></li>
+              <li><span>Dĺžka spotu</span><span data-sum="spot">–</span></li>
+              <li><span>Playlist</span><span data-sum="playlist">–</span></li>
+            </ul>
+            <button class="btn btn--light btn--block" type="button" data-want disabled>
+              <span class="btn__text"><span data-text="Mám záujem">Mám záujem</span></span>
+              <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+            <p class="panel__note">Ceny sú uvedené bez DPH.</p>
+
+            <div class="request" hidden>
+              <form class="request__form" id="calc-request" aria-label="Odoslať požiadavku z kalkulačky">
+                <div class="request__head">
+                  <h3>Kontaktné údaje</h3>
+                  <button type="button" class="request__close" data-request-close aria-label="Zrušiť a zavrieť">✕</button>
+                </div>
+                <p class="request__summary" data-request-summary></p>
+                <div class="field"><input id="rq-name" name="name" type="text" autocomplete="name" placeholder=" " required minlength="2"><label for="rq-name">Meno *</label></div>
+                <div class="field"><input id="rq-company" name="company" type="text" autocomplete="organization" placeholder=" "><label for="rq-company">Firma</label></div>
+                <div class="field"><input id="rq-phone" name="phone" type="tel" autocomplete="tel" placeholder=" " required><label for="rq-phone">Telefón *</label></div>
+                <div class="field"><input id="rq-email" name="email" type="email" autocomplete="email" placeholder=" " required><label for="rq-email">E-mail *</label></div>
+                <div class="field"><textarea id="rq-message" name="message" rows="3" placeholder=" "></textarea><label for="rq-message">Poznámka</label></div>
+                <div class="hp" aria-hidden="true"><label for="rq-website">Web</label><input id="rq-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+                <label class="consent"><input id="rq-consent" type="checkbox" name="consent" required><span>Súhlasím so spracovaním osobných údajov za účelom vybavenia dopytu podľa <a href="ochrana-osobnych-udajov.html" target="_blank">zásad ochrany osobných údajov</a>. *</span></label>
+                <p class="form-status" role="alert"></p>
+                <button class="btn btn--primary btn--block" type="submit">
+                  <span class="btn__text"><span data-text="Odoslať požiadavku">Odoslať požiadavku</span></span>
+                </button>
+              </form>
+              <div class="success" hidden>
+                <canvas class="success__led" aria-hidden="true"></canvas>
+                <h3>Ďakujeme, požiadavku sme prijali.</h3>
+                <p>Ozveme sa vám čo najskôr s voľnými termínmi a detailmi kampane.</p>
+                <button type="button" class="btn btn--ghost btn--sm" data-reset><span class="btn__text"><span data-text="Nová kalkulácia">Nová kalkulácia</span></span></button>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLLAB -->
+    <section class="section collab" id="collab" tabindex="-1">
+      <div class="container collab__grid">
+        <div class="collab__text">
+          <p class="label" data-reveal>(06) Collab</p>
+          <h2 class="h2" data-split>Máte záujem <em>o reklamu?</em></h2>
+          <p class="lead" data-reveal>Vyplňte formulár a ozveme sa vám s ďalším postupom, voľnými termínmi a detailmi kampane.</p>
+          <p class="collab__more" data-reveal>V prípade dlhodobejšej spolupráce, barterových kampaní alebo individuálnych požiadaviek nás neváhajte kontaktovať — spolu nastavíme riešenie presne podľa vašich predstáv.</p>
+
+          <dl class="contact">
+            <div class="contact__row" data-reveal>
+              <dt>Mail</dt>
+              <dd>
+                <a href="mailto:sled@ascensio.sk">sled@ascensio.sk</a>
+                <button type="button" class="copy" data-copy="sled@ascensio.sk" aria-label="Kopírovať e-mail">Kopírovať</button>
+              </dd>
+            </div>
+            <div class="contact__row" data-reveal>
+              <dt>Tel</dt>
+              <dd><a href="tel:+421919455955">+421 919 455 955</a></dd>
+            </div>
+            <div class="contact__row" data-reveal>
+              <dt>Adresa</dt>
+              <dd><address>Továrenská 1471/7<br>064 01 Stará Ľubovňa</address></dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="form-wrap" data-reveal>
+          <form class="form" id="collab-form" aria-label="Formulár Collab">
+            <fieldset class="form__chips">
+              <legend>Typ spolupráce <small>(nepovinné)</small></legend>
+              <div class="chips">
+                <label class="chip chip--sm"><input type="checkbox" name="coopType" value="Reklamná kampaň"><span>Reklamná kampaň</span></label>
+                <label class="chip chip--sm"><input type="checkbox" name="coopType" value="Dlhodobá spolupráca"><span>Dlhodobá spolupráca</span></label>
+                <label class="chip chip--sm"><input type="checkbox" name="coopType" value="Barterová kampaň"><span>Barterová kampaň</span></label>
+                <label class="chip chip--sm"><input type="checkbox" name="coopType" value="Individuálna požiadavka"><span>Individuálna požiadavka</span></label>
+              </div>
+            </fieldset>
+            <div class="form__row">
+              <div class="field"><input id="cf-name" name="name" type="text" autocomplete="name" placeholder=" " required minlength="2"><label for="cf-name">Meno *</label></div>
+              <div class="field"><input id="cf-company" name="company" type="text" autocomplete="organization" placeholder=" "><label for="cf-company">Firma</label></div>
+            </div>
+            <div class="form__row">
+              <div class="field"><input id="cf-phone" name="phone" type="tel" autocomplete="tel" placeholder=" " required><label for="cf-phone">Telefón *</label></div>
+              <div class="field"><input id="cf-email" name="email" type="email" autocomplete="email" placeholder=" " required><label for="cf-email">E-mail *</label></div>
+            </div>
+            <div class="field field--fixed"><input id="cf-start" name="start" type="month" placeholder=" "><label for="cf-start">Preferovaný začiatok kampane (nepovinné)</label></div>
+            <div class="field"><textarea id="cf-message" name="message" rows="4" placeholder=" " required minlength="2"></textarea><label for="cf-message">Poznámka / text správy *</label></div>
+            <div class="hp" aria-hidden="true"><label for="cf-website">Web</label><input id="cf-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+            <label class="consent"><input id="cf-consent" type="checkbox" name="consent" required><span>Súhlasím so spracovaním osobných údajov za účelom vybavenia dopytu podľa <a href="ochrana-osobnych-udajov.html" target="_blank">zásad ochrany osobných údajov</a>. *</span></label>
+            <p class="form-status" role="alert"></p>
+            <div class="form__foot">
+              <span class="req-note">* Povinné polia</span>
+              <button class="btn btn--primary btn--lg magnetic" type="submit">
+                <span class="btn__text"><span data-text="Odoslať dopyt">Odoslať dopyt</span></span>
+                <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </form>
+          <div class="success" hidden>
+            <canvas class="success__led" aria-hidden="true"></canvas>
+            <h3>Ďakujeme, dopyt sme prijali.</h3>
+            <p>Ozveme sa vám čo najskôr s ďalším postupom, voľnými termínmi a detailmi kampane.</p>
+            <button type="button" class="btn btn--ghost btn--sm" data-reset><span class="btn__text"><span data-text="Odoslať ďalší dopyt">Odoslať ďalší dopyt</span></span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__cta">
+        <h2 class="footer__title">Vaša značka <em>v centre pozornosti.</em></h2>
+        <div class="footer__btns">
+          <a class="btn btn--primary btn--lg magnetic" href="#cennik"><span class="btn__text"><span data-text="Vypočítať cenu">Vypočítať cenu</span></span></a>
+          <a class="btn btn--ghost btn--lg magnetic" href="#collab"><span class="btn__text"><span data-text="Napísať nám">Napísať nám</span></span></a>
+        </div>
+      </div>
+
+      <div class="footer__cols">
+        <div class="footer__brand">
+          <a class="logo" href="#top"><span class="logo__mark">s<b>LED</b></span><span class="logo__by">by Ascensio Holding</span></a>
+          <p>Moderný reklamný priestor na LED billboarde na frekventovanom vstupe do Starej Ľubovne.</p>
+        </div>
+        <nav class="footer__col" aria-label="Navigácia v pätičke">
+          <h3>Menu</h3>
+          <ul>
+            <li><a href="#top">Home</a></li>
+            <li><a href="#info">Info</a></li>
+            <li><a href="#cennik">Cenník</a></li>
+            <li><a href="#collab">Collab</a></li>
+          </ul>
+        </nav>
+        <div class="footer__col">
+          <h3>Kontakt</h3>
+          <ul>
+            <li><a href="mailto:sled@ascensio.sk">sled@ascensio.sk</a></li>
+            <li><a href="tel:+421919455955">+421 919 455 955</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3>Adresa</h3>
+          <address>Továrenská 1471/7<br>064 01 Stará Ľubovňa</address>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__word">
+      <canvas aria-hidden="true"></canvas>
+      <span class="sr-only">sLED</span>
+    </div>
+
+    <div class="container footer__bottom">
+      <span>© <span data-year>2026</span> sLED by Ascensio Holding</span>
+      <a href="ochrana-osobnych-udajov.html">Ochrana osobných údajov</a>
+      <a href="#top" class="to-top">Späť hore ↑</a>
+    </div>
+  </footer>
+</body>
+</html>

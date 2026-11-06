@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /tests/
+Disallow: /_src/
+
+Sitemap: https://www.sled.sk/sitemap.xml

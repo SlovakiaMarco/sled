@@ -1,0 +1,12 @@
+# Originálne videá a plagáty z Wixu (lokálna záloha, nepatria do repozitára ani na hosting)
+_src/*.mp4
+_src/*.jpg
+
+# Systémové súbory
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/

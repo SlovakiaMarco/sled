@@ -1,0 +1,72 @@
+{
+  "_info": "Cenník LED billboardu sLED. Ceny sú v CENTOCH, bez DPH, pre spot zaradený 1× do playlistu. Voľba 2× cenu násobí hodnotou doubleMultiplier. Položky s \"confirmed\": false sú zástupné hodnoty, ktoré treba potvrdiť alebo prepísať. Tento súbor používa web (kalkulačka) aj api/mail.php (serverové overenie ceny).",
+  "currency": "EUR",
+  "vatIncluded": false,
+  "doubleMultiplier": 2,
+  "durations": [
+    { "id": "2w",  "label": "2 týždne",   "days": 14 },
+    { "id": "1m",  "label": "1 mesiac",   "days": 30 },
+    { "id": "2m",  "label": "2 mesiace",  "days": 61 },
+    { "id": "3m",  "label": "3 mesiace",  "days": 91 },
+    { "id": "4m",  "label": "4 mesiace",  "days": 122 },
+    { "id": "5m",  "label": "5 mesiacov", "days": 152 },
+    { "id": "6m",  "label": "6 mesiacov", "days": 182 },
+    { "id": "12m", "label": "1 rok",      "days": 365 }
+  ],
+  "spots": [
+    { "id": "10", "label": "10 s", "seconds": 10 },
+    { "id": "15", "label": "15 s", "seconds": 15 },
+    { "id": "20", "label": "20 s", "seconds": 20 },
+    { "id": "25", "label": "25 s", "seconds": 25 }
+  ],
+  "prices": {
+    "2w": {
+      "10": { "cents": 4999,   "confirmed": true },
+      "15": { "cents": 7299,   "confirmed": false },
+      "20": { "cents": 9699,   "confirmed": false },
+      "25": { "cents": 11999,  "confirmed": true }
+    },
+    "1m": {
+      "10": { "cents": 8999,   "confirmed": false },
+      "15": { "cents": 13299,  "confirmed": false },
+      "20": { "cents": 17699,  "confirmed": false },
+      "25": { "cents": 21999,  "confirmed": false }
+    },
+    "2m": {
+      "10": { "cents": 17499,  "confirmed": false },
+      "15": { "cents": 25999,  "confirmed": false },
+      "20": { "cents": 34499,  "confirmed": false },
+      "25": { "cents": 42999,  "confirmed": false }
+    },
+    "3m": {
+      "10": { "cents": 25499,  "confirmed": false },
+      "15": { "cents": 37799,  "confirmed": false },
+      "20": { "cents": 50199,  "confirmed": false },
+      "25": { "cents": 62499,  "confirmed": false }
+    },
+    "4m": {
+      "10": { "cents": 32999,  "confirmed": false },
+      "15": { "cents": 48999,  "confirmed": false },
+      "20": { "cents": 64999,  "confirmed": false },
+      "25": { "cents": 80999,  "confirmed": false }
+    },
+    "5m": {
+      "10": { "cents": 39999,  "confirmed": false },
+      "15": { "cents": 59299,  "confirmed": false },
+      "20": { "cents": 78699,  "confirmed": false },
+      "25": { "cents": 97999,  "confirmed": false }
+    },
+    "6m": {
+      "10": { "cents": 46999,  "confirmed": false },
+      "15": { "cents": 69699,  "confirmed": false },
+      "20": { "cents": 92299,  "confirmed": false },
+      "25": { "cents": 114999, "confirmed": false }
+    },
+    "12m": {
+      "10": { "cents": 86999,  "confirmed": true },
+      "15": { "cents": 129999, "confirmed": false },
+      "20": { "cents": 172999, "confirmed": false },
+      "25": { "cents": 215999, "confirmed": true }
+    }
+  }
+}
